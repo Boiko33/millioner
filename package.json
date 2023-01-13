@@ -15,7 +15,7 @@
   },
   "scripts": {
     "prestart": "eslint . --max-warnings=0",
-    "lint": "eslint . --max-warnings=0",
+    "lint": "eslint . --max-warnings=0 --cache",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
