@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-react-scripts test --watchAll
+react-scripts test --watchAll=false
 
