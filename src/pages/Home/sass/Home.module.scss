@@ -1,0 +1,27 @@
+.container {
+  max-width: 1440px;
+  width: 100%;
+  height: 100%;
+  .content {
+    height: 100%;
+    background: transparent url("../../../assets/images/background.png") no-repeat center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .thumbUp {
+      max-width: 451px;
+      max-height: 356px;
+      margin-right: 118px;
+    }
+    .rightBlock {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .title {
+        font-size: 56px;
+        font-weight: 600;
+        margin: 0 0 64px 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import HomeView from './HomeView';
+import Layout from '../../components/Layout/Layout';
+
+function Home() {
+  const navigate = useNavigate();
+  const startHandler = () => {
+    navigate('/game');
+  };
+  return (
+    <Layout>
+      <HomeView startHandler={startHandler} />
+    </Layout>
+  );
+}
+
+export default Home;

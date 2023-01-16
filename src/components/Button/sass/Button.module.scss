@@ -1,0 +1,22 @@
+.btn {
+  max-width: 296px;
+  width: 100%;
+  align-self: center;
+  height: 64px;
+  background-color: #FF8B37;
+  border-radius: 12px;
+  border: 1px solid #FF8B37;
+  color: #ffff;
+  .title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+
+.btn:hover {
+  background-color: #FFAC70;
+}
+
+.btn:active {
+  background-color: #E87928;
+}
