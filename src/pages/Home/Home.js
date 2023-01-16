@@ -6,6 +6,7 @@ import Layout from '../../components/Layout/Layout';
 function Home() {
   const navigate = useNavigate();
   const startHandler = () => {
+    localStorage.setItem('Prize', '0');
     navigate('/game');
   };
   return (

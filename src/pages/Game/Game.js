@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Layout from '../../components/Layout/Layout';
 import GameView from './GameView';
 import questionList from '../../mocks/questionList.json';
@@ -6,9 +7,9 @@ import moneyList from '../../mocks/moneyList.json';
 import styles from './sass/Game.module.scss';
 
 function Game() {
+  const navigation = useNavigate();
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [isShowResult, setIsShowResult] = useState(false);
-  // const [totalPrize, setTotalPrize] = useState(0);
   const [activePrizeId, setActivePrizeId] = useState(1);
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
@@ -34,7 +35,13 @@ function Game() {
         const secondArr = [...correctAnswers].sort();
         setIsShowResult(true);
         const isEqual = firstArr.every((val, index) => val === secondArr[index]);
-        setIsCorrectAnswer(isEqual);
+        if (isEqual) {
+          setIsCorrectAnswer(true);
+        } else {
+          const activePrize = moneyList.find((item) => item.id === activePrizeId - 1);
+          localStorage.setItem('Prize', activePrize?.value || '0');
+          navigation('/end-game');
+        }
       }, 1000);
     }
   };
