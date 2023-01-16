@@ -3,6 +3,7 @@ import Layout from '../../components/Layout/Layout';
 import GameView from './GameView';
 import questionList from '../../mocks/questionList.json';
 import moneyList from '../../mocks/moneyList.json';
+import styles from './sass/Game.module.scss';
 
 function Game() {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -46,6 +47,21 @@ function Game() {
     setSelectedAnswers([]);
   };
 
+  const answerStyleHandler = (id, correctAnswers) => {
+    let answerStyle;
+    if (isShowResult) {
+      if (correctAnswers.find((item) => item === id)) {
+        answerStyle = styles.correct;
+      } else if ((selectedAnswers !== correctAnswers)
+        && (selectedAnswers.find((item) => item === id))) {
+        answerStyle = styles.wrong;
+      }
+    } else if (selectedAnswers.find((item) => item === id)) {
+      answerStyle = styles.selected;
+    }
+    return answerStyle;
+  };
+
   return (
     <Layout>
       <GameView
@@ -53,13 +69,13 @@ function Game() {
         variantsSwitcher={variantsSwitcher}
         activeQuestion={activeQuestion}
         selectAnswer={selectAnswer}
-        selectedAnswers={selectedAnswers}
         isShowResult={isShowResult}
         moneyList={moneyList}
         activePrizeId={activePrizeId}
         setActivePrizeId={setActivePrizeId}
         nextQuestionHandler={nextQuestionHandler}
         isCorrectAnswer={isCorrectAnswer}
+        answerStyleHandler={answerStyleHandler}
       />
     </Layout>
   );

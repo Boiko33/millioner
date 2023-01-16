@@ -11,12 +11,12 @@ function GameView({
   variantsSwitcher,
   activeQuestion,
   selectAnswer,
-  selectedAnswers,
   isShowResult,
   moneyList,
   activePrizeId,
   nextQuestionHandler,
   isCorrectAnswer,
+  answerStyleHandler,
 }) {
   return (
     <div className={styles.container}>
@@ -25,8 +25,8 @@ function GameView({
         variantsSwitcher={variantsSwitcher}
         activeQuestion={activeQuestion}
         selectAnswer={selectAnswer}
-        selectedAnswers={selectedAnswers}
         isShowResult={isShowResult}
+        answerStyleHandler={answerStyleHandler}
       />
       <ProgressTree
         moneyList={moneyList}
@@ -48,12 +48,12 @@ GameView.propTypes = {
   variantsSwitcher: PropTypes.func.isRequired,
   activeQuestion: PropTypes.number.isRequired,
   selectAnswer: PropTypes.func.isRequired,
-  selectedAnswers: PropTypes.arrayOf(PropTypes.number).isRequired,
   isShowResult: PropTypes.bool.isRequired,
   moneyList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   activePrizeId: PropTypes.number.isRequired,
   nextQuestionHandler: PropTypes.func.isRequired,
   isCorrectAnswer: PropTypes.bool.isRequired,
+  answerStyleHandler: PropTypes.func.isRequired,
 };
 
 export default GameView;

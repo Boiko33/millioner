@@ -8,25 +8,10 @@ function PossibleAnswer({
   title,
   variantsSwitcher,
   selectAnswer,
-  selectedAnswers,
   isShowResult,
   correctAnswers,
+  answerStyleHandler,
 }) {
-  const answerStyleHandler = () => {
-    let answerStyle;
-    if (isShowResult) {
-      if (correctAnswers.find((item) => item === id)) {
-        answerStyle = styles.correct;
-      } else if ((selectedAnswers !== correctAnswers)
-        && (selectedAnswers.find((item) => item === id))) {
-        answerStyle = styles.wrong;
-      }
-    } else if (selectedAnswers.find((item) => item === id)) {
-      answerStyle = styles.selected;
-    }
-    return answerStyle;
-  };
-
   return (
     <div>
       <button
@@ -34,7 +19,7 @@ function PossibleAnswer({
         type="button"
         className={`
           ${styles.answerBtn} 
-          ${answerStyleHandler()}
+          ${answerStyleHandler(id, correctAnswers)}
         `}
         onClick={() => selectAnswer(id, correctAnswers)}
       >
@@ -54,7 +39,7 @@ PossibleAnswer.propTypes = {
   title: PropTypes.string.isRequired,
   variantsSwitcher: PropTypes.func.isRequired,
   selectAnswer: PropTypes.func.isRequired,
-  selectedAnswers: PropTypes.arrayOf(PropTypes.number).isRequired,
+  answerStyleHandler: PropTypes.func.isRequired,
   correctAnswers: PropTypes.arrayOf(PropTypes.number).isRequired,
   isShowResult: PropTypes.bool.isRequired,
 };
