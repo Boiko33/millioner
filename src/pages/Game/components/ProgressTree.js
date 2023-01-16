@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../sass/Game.module.scss';
-import { FINISHED, INACTIVE } from '../../../config/constants';
 
 function ProgressTree({ moneyList, activePrizeId }) {
-  const progresItemStyle = (id) => {
+  const progressItemStyle = (id) => {
     let itemStyle;
-    if (id === INACTIVE) {
-      itemStyle = styles.inactive;
-    } else if (id === activePrizeId) {
+    if (id === activePrizeId) {
       itemStyle = styles.active;
-    } else if (id === FINISHED) {
+    } else if (id < activePrizeId) {
       itemStyle = styles.finished;
     }
     return itemStyle;
@@ -21,10 +18,10 @@ function ProgressTree({ moneyList, activePrizeId }) {
     <div className={styles.progressContainer}>
       {moneyList.map(({ id, value }) => (
         <div
-          key={id}
+          key={`moneyList_${id}`}
           className={`
           ${styles.progressItem} 
-          ${progresItemStyle(id)}
+          ${progressItemStyle(id)}
         `}
         >
           <p className={styles.answerTitle}>

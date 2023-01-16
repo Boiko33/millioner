@@ -21,7 +21,7 @@ function Result({
       <div className={styles.answersContainer}>
         {possibleAnswers.map(({ id, title }) => (
           <PossibleAnswer
-            key={id}
+            key={`possibleAnswers_${id}`}
             variantsSwitcher={variantsSwitcher}
             id={id}
             title={title}
