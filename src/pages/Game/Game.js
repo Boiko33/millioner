@@ -5,7 +5,7 @@ import questionList from '../../mocks/questionList.json';
 import moneyList from '../../mocks/moneyList.json';
 
 function Game() {
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [isShowResult, setIsShowResult] = useState(false);
   // const [totalPrize, setTotalPrize] = useState(0);
   const [activePrizeId, setActivePrizeId] = useState(1);
@@ -24,19 +24,26 @@ function Game() {
     }
   };
 
-  const selectAnswer = (id, correctId) => {
-    setSelectedAnswer(id);
-    setTimeout(() => {
-      setIsShowResult(true);
-      setIsCorrectAnswer(correctId === id);
-    }, 1000);
+  const selectAnswer = (id, correctAnswers) => {
+    const newArray = [...selectedAnswers, id];
+    setSelectedAnswers(newArray);
+    if (newArray.length === correctAnswers.length) {
+      setTimeout(() => {
+        const firstArr = [...newArray].sort();
+        const secondArr = [...correctAnswers].sort();
+        setIsShowResult(true);
+        const isEqual = firstArr.every((val, index) => val === secondArr[index]);
+        setIsCorrectAnswer(isEqual);
+      }, 1000);
+    }
   };
 
   const nextQuestionHandler = () => {
     setActivePrizeId(activePrizeId + 1);
     setActiveQuestion(activeQuestion + 1);
     setIsShowResult(false);
-    setSelectedAnswer(null);
+    setIsCorrectAnswer(false);
+    setSelectedAnswers([]);
   };
 
   return (
@@ -46,7 +53,7 @@ function Game() {
         variantsSwitcher={variantsSwitcher}
         activeQuestion={activeQuestion}
         selectAnswer={selectAnswer}
-        selectedAnswer={selectedAnswer}
+        selectedAnswers={selectedAnswers}
         isShowResult={isShowResult}
         moneyList={moneyList}
         activePrizeId={activePrizeId}

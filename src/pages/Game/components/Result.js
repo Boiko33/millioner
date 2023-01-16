@@ -9,10 +9,10 @@ function Result({
   variantsSwitcher,
   activeQuestion,
   selectAnswer,
-  selectedAnswer,
+  selectedAnswers,
   isShowResult,
 }) {
-  const { question, possibleAnswers, correctAnswerId } = questionList[activeQuestion];
+  const { question, possibleAnswers, correctAnswers } = questionList[activeQuestion];
   return (
     <div className={styles.resultContainer}>
       <p className={styles.title}>
@@ -26,9 +26,9 @@ function Result({
             id={id}
             title={title}
             selectAnswer={selectAnswer}
-            selectedAnswer={selectedAnswer}
+            selectedAnswers={selectedAnswers}
             isShowResult={isShowResult}
-            correctAnswerId={correctAnswerId}
+            correctAnswers={correctAnswers}
           />
         ))}
       </div>
@@ -42,17 +42,13 @@ Result.propTypes = {
     possibleAnswers: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string.isRequired,
     })).isRequired,
-    correctAnswerId: PropTypes.number.isRequired,
+    correctAnswers: PropTypes.arrayOf(PropTypes.number).isRequired,
   })).isRequired,
   variantsSwitcher: PropTypes.func.isRequired,
   activeQuestion: PropTypes.number.isRequired,
   selectAnswer: PropTypes.func.isRequired,
-  selectedAnswer: PropTypes.number,
+  selectedAnswers: PropTypes.arrayOf(PropTypes.number).isRequired,
   isShowResult: PropTypes.bool.isRequired,
-};
-
-Result.defaultProps = {
-  selectedAnswer: null,
 };
 
 export default Result;

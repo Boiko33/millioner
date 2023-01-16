@@ -8,19 +8,20 @@ function PossibleAnswer({
   title,
   variantsSwitcher,
   selectAnswer,
-  selectedAnswer,
+  selectedAnswers,
   isShowResult,
-  correctAnswerId,
+  correctAnswers,
 }) {
   const answerStyleHandler = () => {
     let answerStyle;
     if (isShowResult) {
-      if (id === correctAnswerId) {
+      if (correctAnswers.find((item) => item === id)) {
         answerStyle = styles.correct;
-      } else if ((selectedAnswer !== correctAnswerId) && (selectedAnswer === id)) {
+      } else if ((selectedAnswers !== correctAnswers)
+        && (selectedAnswers.find((item) => item === id))) {
         answerStyle = styles.wrong;
       }
-    } else if (id === selectedAnswer) {
+    } else if (selectedAnswers.find((item) => item === id)) {
       answerStyle = styles.selected;
     }
     return answerStyle;
@@ -35,7 +36,7 @@ function PossibleAnswer({
           ${styles.answerBtn} 
           ${answerStyleHandler()}
         `}
-        onClick={() => selectAnswer(id, correctAnswerId)}
+        onClick={() => selectAnswer(id, correctAnswers)}
       >
         <p className={styles.variant}>
           {variantsSwitcher(id)}
@@ -53,13 +54,9 @@ PossibleAnswer.propTypes = {
   title: PropTypes.string.isRequired,
   variantsSwitcher: PropTypes.func.isRequired,
   selectAnswer: PropTypes.func.isRequired,
-  selectedAnswer: PropTypes.number,
-  correctAnswerId: PropTypes.number.isRequired,
+  selectedAnswers: PropTypes.arrayOf(PropTypes.number).isRequired,
+  correctAnswers: PropTypes.arrayOf(PropTypes.number).isRequired,
   isShowResult: PropTypes.bool.isRequired,
-};
-
-PossibleAnswer.defaultProps = {
-  selectedAnswer: null,
 };
 
 export default PossibleAnswer;

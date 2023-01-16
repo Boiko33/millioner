@@ -19,7 +19,7 @@
         "title": "14 years"
       }
     ],
-    "correctAnswerId": 1
+    "correctAnswers": [1]
   },
   {
     "question": "2 + 2 = ?",
@@ -41,6 +41,28 @@
         "title": "4"
       }
     ],
-    "correctAnswerId": 4
+    "correctAnswers": [4]
+  },
+  {
+    "question": "4-letters words",
+    "possibleAnswers": [
+      {
+        "id": 1,
+        "title": "Game"
+      },
+      {
+        "id": 2,
+        "title": "Task"
+      },
+      {
+        "id": 3,
+        "title": "Millionaire"
+      },
+      {
+        "id": 4,
+        "title": "Border"
+      }
+    ],
+    "correctAnswers": [1, 2]
   }
 ]

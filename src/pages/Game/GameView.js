@@ -11,7 +11,7 @@ function GameView({
   variantsSwitcher,
   activeQuestion,
   selectAnswer,
-  selectedAnswer,
+  selectedAnswers,
   isShowResult,
   moneyList,
   activePrizeId,
@@ -25,7 +25,7 @@ function GameView({
         variantsSwitcher={variantsSwitcher}
         activeQuestion={activeQuestion}
         selectAnswer={selectAnswer}
-        selectedAnswer={selectedAnswer}
+        selectedAnswers={selectedAnswers}
         isShowResult={isShowResult}
       />
       <ProgressTree
@@ -48,16 +48,12 @@ GameView.propTypes = {
   variantsSwitcher: PropTypes.func.isRequired,
   activeQuestion: PropTypes.number.isRequired,
   selectAnswer: PropTypes.func.isRequired,
-  selectedAnswer: PropTypes.number,
+  selectedAnswers: PropTypes.arrayOf(PropTypes.number).isRequired,
   isShowResult: PropTypes.bool.isRequired,
   moneyList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   activePrizeId: PropTypes.number.isRequired,
   nextQuestionHandler: PropTypes.func.isRequired,
   isCorrectAnswer: PropTypes.bool.isRequired,
-};
-
-GameView.defaultProps = {
-  selectedAnswer: null,
 };
 
 export default GameView;
