@@ -26,6 +26,8 @@ function Game() {
     }
   };
 
+  const theLastQuestionId = 12;
+
   const selectAnswer = (id, correctAnswers) => {
     const newArray = [...selectedAnswers, id];
     setSelectedAnswers(newArray);
@@ -37,6 +39,9 @@ function Game() {
         const isEqual = firstArr.every((val, index) => val === secondArr[index]);
         if (isEqual) {
           setIsCorrectAnswer(true);
+          if (activePrizeId === theLastQuestionId) {
+            localStorage.setItem('Prize', '1,000,000');
+          }
         } else {
           const activePrize = moneyList.find((item) => item.id === activePrizeId - 1);
           localStorage.setItem('Prize', activePrize?.value || '0');
@@ -47,11 +52,15 @@ function Game() {
 
   const nextQuestionHandler = () => {
     if (isCorrectAnswer) {
-      setActivePrizeId(activePrizeId + 1);
-      setActiveQuestion(activeQuestion + 1);
-      setIsShowResult(false);
-      setIsCorrectAnswer(false);
-      setSelectedAnswers([]);
+      if (activePrizeId === theLastQuestionId) {
+        navigation('/end-game');
+      } else {
+        setActivePrizeId(activePrizeId + 1);
+        setActiveQuestion(activeQuestion + 1);
+        setIsShowResult(false);
+        setIsCorrectAnswer(false);
+        setSelectedAnswers([]);
+      }
     } else {
       navigation('/end-game');
     }

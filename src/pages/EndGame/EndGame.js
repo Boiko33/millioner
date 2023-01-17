@@ -5,6 +5,7 @@ import EndGameView from './EndGameView';
 function EndGame() {
   const navigate = useNavigate();
   const [prize, setPrize] = useState('0');
+  const isMillionaire = prize === '1,000,000';
 
   useEffect(() => {
     const finalPrize = localStorage.getItem('Prize');
@@ -12,7 +13,11 @@ function EndGame() {
   }, []);
 
   return (
-    <EndGameView prize={prize} tryAgainHandler={() => navigate('/')} />
+    <EndGameView
+      prize={prize}
+      tryAgainHandler={() => navigate('/')}
+      isMillionaire={isMillionaire}
+    />
   );
 }
 
