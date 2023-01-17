@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-eslint --max-warnings=0  --cache
+eslint --ext .ts,.tsx,.js,.jsx ./src --max-warnings=0  --cache
