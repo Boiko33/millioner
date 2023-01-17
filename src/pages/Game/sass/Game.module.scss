@@ -1,3 +1,5 @@
+@import "src/styles/variables";
+
 .container {
   max-width: 1440px;
   width: 100%;
@@ -10,7 +12,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #F5F5F7;
+    background-color: $grey-light;
     padding: 133px 0 122px 80px;
     .title {
       font-size: 32px;
@@ -32,7 +34,7 @@
         padding-left: 32px;
         position: relative;
         &:disabled {
-          color: #000000;
+          color: $black;
         }
         &:hover {
           background: url("../../../assets/images/hoverItem.png") no-repeat center;
@@ -43,12 +45,11 @@
           width: 17px;
           height: 0;
           left: -17px;
-          background-color: #282c34;
           top: 35px;
 
           /* Black-40 */
 
-          border: 1px solid #D0D0D8;
+          border: 1px solid $grey;
         }
         &::after {
           content: '';
@@ -56,12 +57,11 @@
           width: 17px;
           height: 0;
           right: -17px;
-          background-color: #282c34;
           top: 35px;
 
           /* Black-40 */
 
-          border: 1px solid #D0D0D8;
+          border: 1px solid $grey;
         }
         .answerTitle {
           font-size: 20px;
@@ -69,7 +69,7 @@
         }
         .variant {
           margin-right: 8px;
-          color: #FF8B37;
+          color: $orange;
           font-size: 20px;
           font-weight: 600;
         }
@@ -95,7 +95,7 @@
     }
   }
   .progressContainer {
-    background-color: #FFFFFF;
+    background-color: $white;
     width: 376px;
     display: flex;
     flex-direction: column-reverse;
@@ -119,12 +119,11 @@
         width: 69px;
         height: 0;
         left: -69px;
-        background-color: #282c34;
         top: 19px;
 
         /* Black-40 */
 
-        border: 1px solid #D0D0D8;
+        border: 1px solid $grey;
       }
       &::after {
         content: '';
@@ -132,26 +131,25 @@
         width: 69px;
         height: 0;
         right: -69px;
-        background-color: #282c34;
         top: 19px;
 
         /* Black-40 */
 
-        border: 1px solid #D0D0D8;
+        border: 1px solid $grey;
       }
     }
     .active {
       background: url("../../../assets/images/currentPrice.png") no-repeat center;
       &::after {
-        border: 1px solid #FF8B37;
+        border: 1px solid $orange;
       }
       &::before {
-        border: 1px solid #FF8B37;
+        border: 1px solid $orange;
       }
     }
     .finished {
       background: url('../../../assets/images/finishedPrice.png') no-repeat center;
-      color: #D0D0D8;
+      color: $grey;
     }
   }
   .nextBtn {
