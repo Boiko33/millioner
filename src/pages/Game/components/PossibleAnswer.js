@@ -11,11 +11,12 @@ function PossibleAnswer({
   isShowResult,
   correctAnswers,
   answerStyleHandler,
+  isAlreadySelected,
 }) {
   return (
     <div>
       <button
-        disabled={isShowResult}
+        disabled={isShowResult || isAlreadySelected(id)}
         type="button"
         className={`
           ${styles.answerBtn} 
@@ -42,6 +43,7 @@ PossibleAnswer.propTypes = {
   answerStyleHandler: PropTypes.func.isRequired,
   correctAnswers: PropTypes.arrayOf(PropTypes.number).isRequired,
   isShowResult: PropTypes.bool.isRequired,
+  isAlreadySelected: PropTypes.func.isRequired,
 };
 
 export default PossibleAnswer;

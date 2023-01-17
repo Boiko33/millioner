@@ -27,7 +27,7 @@ function Game() {
   };
 
   const theLastQuestionId = 12;
-
+  const isAlreadySelected = (id) => selectedAnswers.includes(id);
   const selectAnswer = (id, correctAnswers) => {
     const newArray = [...selectedAnswers, id];
     setSelectedAnswers(newArray);
@@ -95,6 +95,7 @@ function Game() {
         nextQuestionHandler={nextQuestionHandler}
         isCorrectAnswer={isCorrectAnswer}
         answerStyleHandler={answerStyleHandler}
+        isAlreadySelected={isAlreadySelected}
       />
     </Layout>
   );

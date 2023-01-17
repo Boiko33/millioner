@@ -4,7 +4,6 @@ import Result from './components/Result';
 import ProgressTree from './components/ProgressTree';
 
 import styles from './sass/Game.module.scss';
-import Button from '../../components/Button/Button';
 
 function GameView({
   questionList,
@@ -17,6 +16,7 @@ function GameView({
   nextQuestionHandler,
   isCorrectAnswer,
   answerStyleHandler,
+  isAlreadySelected,
 }) {
   return (
     <div className={styles.container}>
@@ -27,18 +27,14 @@ function GameView({
         selectAnswer={selectAnswer}
         isShowResult={isShowResult}
         answerStyleHandler={answerStyleHandler}
+        isAlreadySelected={isAlreadySelected}
+        nextQuestionHandler={nextQuestionHandler}
+        isCorrectAnswer={isCorrectAnswer}
       />
       <ProgressTree
         moneyList={moneyList}
         activePrizeId={activePrizeId}
       />
-      {isShowResult && (
-        <Button
-          onClick={nextQuestionHandler}
-          title={isCorrectAnswer ? 'Next' : 'The End'}
-          style={styles.nextBtn}
-        />
-      )}
     </div>
   );
 }
@@ -54,6 +50,7 @@ GameView.propTypes = {
   nextQuestionHandler: PropTypes.func.isRequired,
   isCorrectAnswer: PropTypes.bool.isRequired,
   answerStyleHandler: PropTypes.func.isRequired,
+  isAlreadySelected: PropTypes.func.isRequired,
 };
 
 export default GameView;

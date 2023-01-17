@@ -13,7 +13,8 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: $grey-light;
-    padding: 133px 0 122px 80px;
+    padding: 133px 20px 122px 80px;
+    position: relative;
     .title {
       font-size: 32px;
       font-weight: 600;
@@ -46,9 +47,6 @@
           height: 0;
           left: -17px;
           top: 35px;
-
-          /* Black-40 */
-
           border: 1px solid $grey;
         }
         &::after {
@@ -58,9 +56,6 @@
           height: 0;
           right: -17px;
           top: 35px;
-
-          /* Black-40 */
-
           border: 1px solid $grey;
         }
         .answerTitle {
@@ -93,6 +88,13 @@
         }
       }
     }
+    .nextBtn {
+      position: absolute;
+      right: 40px;
+      top: 40px;
+      width: auto;
+      padding: 0 20px;
+    }
   }
   .progressContainer {
     background-color: $white;
@@ -120,9 +122,6 @@
         height: 0;
         left: -69px;
         top: 19px;
-
-        /* Black-40 */
-
         border: 1px solid $grey;
       }
       &::after {
@@ -132,9 +131,6 @@
         height: 0;
         right: -69px;
         top: 19px;
-
-        /* Black-40 */
-
         border: 1px solid $grey;
       }
     }
@@ -151,11 +147,5 @@
       background: url('../../../assets/images/finishedPrice.png') no-repeat center;
       color: $grey;
     }
-  }
-  .nextBtn {
-    position: absolute;
-    align-self: center;
-    top: 50%;
-    left: 30%
   }
 }
