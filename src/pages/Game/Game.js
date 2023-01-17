@@ -40,18 +40,21 @@ function Game() {
         } else {
           const activePrize = moneyList.find((item) => item.id === activePrizeId - 1);
           localStorage.setItem('Prize', activePrize?.value || '0');
-          navigation('/end-game');
         }
       }, 1000);
     }
   };
 
   const nextQuestionHandler = () => {
-    setActivePrizeId(activePrizeId + 1);
-    setActiveQuestion(activeQuestion + 1);
-    setIsShowResult(false);
-    setIsCorrectAnswer(false);
-    setSelectedAnswers([]);
+    if (isCorrectAnswer) {
+      setActivePrizeId(activePrizeId + 1);
+      setActiveQuestion(activeQuestion + 1);
+      setIsShowResult(false);
+      setIsCorrectAnswer(false);
+      setSelectedAnswers([]);
+    } else {
+      navigation('/end-game');
+    }
   };
 
   const answerStyleHandler = (id, correctAnswers) => {

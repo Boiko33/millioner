@@ -32,10 +32,10 @@ function GameView({
         moneyList={moneyList}
         activePrizeId={activePrizeId}
       />
-      {isCorrectAnswer && (
+      {isShowResult && (
         <Button
           onClick={nextQuestionHandler}
-          title="Next"
+          title={isCorrectAnswer ? 'Next' : 'The End'}
           style={styles.nextBtn}
         />
       )}
