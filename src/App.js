@@ -5,7 +5,7 @@ import Game from './pages/Game/Game';
 import EndGame from './pages/EndGame/EndGame';
 
 import './styles/globals.scss';
-
+//
 function App() {
   return (
     <BrowserRouter>
