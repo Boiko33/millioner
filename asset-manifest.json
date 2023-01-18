@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/millioner/static/css/main.0f2d2729.css",
+    "main.js": "/millioner/static/js/main.59b3fc4a.js",
+    "static/js/787.9032fda5.chunk.js": "/millioner/static/js/787.9032fda5.chunk.js",
+    "service-worker.js": "/millioner/service-worker.js",
+    "static/media/thumbUp.png": "/millioner/static/media/thumbUp.ce309bcbf638fc25bb80.png",
+    "static/media/background.png": "/millioner/static/media/background.81a8cbaa50b9094644c2.png",
+    "index.html": "/millioner/index.html",
+    "main.0f2d2729.css.map": "/millioner/static/css/main.0f2d2729.css.map",
+    "main.59b3fc4a.js.map": "/millioner/static/js/main.59b3fc4a.js.map",
+    "787.9032fda5.chunk.js.map": "/millioner/static/js/787.9032fda5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f2d2729.css",
+    "static/js/main.59b3fc4a.js"
+  ]
+}
