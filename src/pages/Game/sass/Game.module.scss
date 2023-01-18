@@ -1,4 +1,5 @@
 @import "src/styles/variables";
+@import "src/styles/mixins";
 
 .container {
   max-width: 1440px;
@@ -7,6 +8,9 @@
   display: flex;
   justify-content: space-between;
   position: relative;
+  @include tablet {
+    background-color: $grey-light;
+  }
   .resultContainer {
     flex: 1;
     display: flex;
@@ -15,15 +19,30 @@
     background-color: $grey-light;
     padding: 133px 20px 122px 80px;
     position: relative;
+    @include tablet {
+      padding: 133px 16px 24px 16px;
+      align-items: center;
+    }
     .title {
       font-size: 32px;
       font-weight: 600;
       max-width: 620px;
+      @include tablet {
+        text-align: center;
+      }
     }
     .answersContainer {
       display: flex;
       flex-wrap: wrap;
       gap: 34px;
+      @include tablet {
+        flex-direction: column;
+        gap: 8px;
+      }
+      @include mobile {
+        width: 100%;
+        align-items: center;
+      }
       .answerBtn {
         background: url("../../../assets/images/inactiveItem.png") no-repeat center;
         border: 0;
@@ -34,6 +53,11 @@
         align-items: center;
         padding-left: 32px;
         position: relative;
+        @include mobile {
+          height: 56px;
+          width: 288px;
+          background: url("../../../assets/images/inactiveItemMobile.png") no-repeat center;
+        }
         &:disabled {
           color: $black;
         }
@@ -48,6 +72,9 @@
           left: -17px;
           top: 35px;
           border: 1px solid $grey;
+          @include mobile {
+            top: 27px;
+          }
         }
         &::after {
           content: '';
@@ -57,16 +84,25 @@
           right: -17px;
           top: 35px;
           border: 1px solid $grey;
+          @include mobile {
+            top: 27px;
+          }
         }
         .answerTitle {
           font-size: 20px;
           font-weight: 400;
+          @include mobile {
+            font-size: 14px;
+          }
         }
         .variant {
           margin-right: 8px;
           color: $orange;
           font-size: 20px;
           font-weight: 600;
+          @include mobile {
+            font-size: 14px;
+          }
         }
       }
       .selected {
@@ -74,17 +110,35 @@
         &:hover {
           background: url("../../../assets/images/selectedItem.png") no-repeat center;
         }
+        @include mobile {
+          background: url("../../../assets/images/selectedItemMobile.png") no-repeat center;
+          &:hover {
+            background: url("../../../assets/images/selectedItemMobile.png") no-repeat center;
+          }
+        }
       }
       .correct {
         background: url("../../../assets/images/correctItem.png") no-repeat center;
         &:hover {
           background: url("../../../assets/images/correctItem.png") no-repeat center;
         }
+        @include mobile {
+          background: url("../../../assets/images/correctItemMobile.png") no-repeat center;
+          &:hover {
+            background: url("../../../assets/images/correctItemMobile.png") no-repeat center;
+          }
+        }
       }
       .wrong {
         background: url("../../../assets/images/wrongItem.png") no-repeat center;
         &:hover {
           background: url("../../../assets/images/wrongItem.png") no-repeat center;
+        }
+        @include mobile {
+          background: url("../../../assets/images/wrongItemMobile.png") no-repeat center;
+          &:hover {
+            background: url("../../../assets/images/wrongItemMobile.png") no-repeat center;
+          }
         }
       }
     }
@@ -94,6 +148,12 @@
       top: 40px;
       width: auto;
       padding: 0 20px;
+      @include tablet {
+        right: 45%
+      }
+      @include mobile {
+        right: 38%;
+      }
     }
   }
   .progressContainer {
@@ -104,6 +164,9 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
+    @include tablet {
+      width: 100%;
+    }
     .progressItem {
       background: url("../../../assets/images/inactivePrice.png") no-repeat center;
       border: 0;
@@ -146,6 +209,32 @@
     .finished {
       background: url('../../../assets/images/finishedPrice.png') no-repeat center;
       color: $grey;
+    }
+  }
+  .hamburger {
+    display: none;
+    @include tablet {
+      border: 0;
+      display: flex;
+      align-self: flex-end;
+      width: 24px;
+      height: 24px;
+      justify-content: space-between;
+      flex-flow: column nowrap;
+      padding: 5px 4px;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      content: '';
+      z-index: 1
+    }
+    .burger {
+      width: 24px;
+      height: 3px;
+      border-radius: 10px;
+      background-color: $black;
+      transform-origin: 1px;
+      transition: all 0.3s linear;
     }
   }
 }

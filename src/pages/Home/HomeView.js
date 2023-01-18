@@ -18,7 +18,11 @@ function HomeView({ startHandler }) {
             {' '}
             a millionaire?
           </p>
-          <Button onClick={startHandler} title="Start" />
+          <Button
+            onClick={startHandler}
+            title="Start"
+            style={styles.btn}
+          />
         </div>
       </div>
     </div>

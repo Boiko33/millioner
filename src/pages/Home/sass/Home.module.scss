@@ -1,3 +1,5 @@
+@import "src/styles/mixins";
+
 .container {
   max-width: 1440px;
   width: 100%;
@@ -8,19 +10,57 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @include tablet {
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 0 16px 0 16px;
+      background-size: cover;
+    }
+    @include tablet-small {
+      background: transparent url("../../../assets/images/backgroundSmall.png") no-repeat center;
+      background-size: cover;
+    }
+
     .thumbUp {
       max-width: 451px;
       max-height: 356px;
       margin-right: 118px;
+      @include tablet {
+        margin: 98px 0 42px 0;
+      }
+      @include tablet-small {
+        max-width: 288px;
+        max-height: 192px;
+      }
     }
     .rightBlock {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      @include tablet {
+        align-items: center;
+        justify-content: space-between;
+        flex: 1;
+        width: 100%;
+      }
       .title {
         font-size: 56px;
         font-weight: 600;
         margin: 0 0 64px 0;
+        @include tablet {
+          margin: 0;
+          text-align: center;
+        }
+        @include tablet-small {
+          font-size: 32px;
+        }
+      }
+      .btn {
+        @include tablet {
+          text-align: center;
+          max-width: none;
+          margin-bottom: 48px;
+        }
       }
     }
   }

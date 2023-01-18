@@ -17,24 +17,65 @@ function GameView({
   isCorrectAnswer,
   answerStyleHandler,
   isAlreadySelected,
+  windowWidth,
+  burgerHandler,
+  isHamburgerOpen,
 }) {
+  const mobileRender = () => {
+    const tabletWidth = 900;
+    if (windowWidth < tabletWidth) {
+      if (isHamburgerOpen) {
+        return (
+          <ProgressTree
+            moneyList={moneyList}
+            activePrizeId={activePrizeId}
+            isOpen={isHamburgerOpen}
+          />
+        );
+      } return (
+        <Result
+          questionList={questionList}
+          variantsSwitcher={variantsSwitcher}
+          activeQuestion={activeQuestion}
+          selectAnswer={selectAnswer}
+          isShowResult={isShowResult}
+          answerStyleHandler={answerStyleHandler}
+          isAlreadySelected={isAlreadySelected}
+          nextQuestionHandler={nextQuestionHandler}
+          isCorrectAnswer={isCorrectAnswer}
+        />
+      );
+    }
+    return (
+      <>
+        <Result
+          questionList={questionList}
+          variantsSwitcher={variantsSwitcher}
+          activeQuestion={activeQuestion}
+          selectAnswer={selectAnswer}
+          isShowResult={isShowResult}
+          answerStyleHandler={answerStyleHandler}
+          isAlreadySelected={isAlreadySelected}
+          nextQuestionHandler={nextQuestionHandler}
+          isCorrectAnswer={isCorrectAnswer}
+        />
+        <ProgressTree
+          moneyList={moneyList}
+          activePrizeId={activePrizeId}
+          isOpen={isHamburgerOpen}
+        />
+      </>
+    );
+  };
+
   return (
     <div className={styles.container}>
-      <Result
-        questionList={questionList}
-        variantsSwitcher={variantsSwitcher}
-        activeQuestion={activeQuestion}
-        selectAnswer={selectAnswer}
-        isShowResult={isShowResult}
-        answerStyleHandler={answerStyleHandler}
-        isAlreadySelected={isAlreadySelected}
-        nextQuestionHandler={nextQuestionHandler}
-        isCorrectAnswer={isCorrectAnswer}
-      />
-      <ProgressTree
-        moneyList={moneyList}
-        activePrizeId={activePrizeId}
-      />
+      <div role="presentation" onClick={burgerHandler} className={styles.hamburger}>
+        <div className={styles.burger} />
+        <div className={styles.burger} />
+        <div className={styles.burger} />
+      </div>
+      {mobileRender()}
     </div>
   );
 }
@@ -51,6 +92,9 @@ GameView.propTypes = {
   isCorrectAnswer: PropTypes.bool.isRequired,
   answerStyleHandler: PropTypes.func.isRequired,
   isAlreadySelected: PropTypes.func.isRequired,
+  windowWidth: PropTypes.number.isRequired,
+  burgerHandler: PropTypes.func.isRequired,
+  isHamburgerOpen: PropTypes.bool.isRequired,
 };
 
 export default GameView;

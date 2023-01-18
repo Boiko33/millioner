@@ -11,19 +11,21 @@ function EndGameView({ prize, tryAgainHandler, isMillionaire }) {
       <div className={styles.content}>
         <img alt="thumbUp" className={styles.thumbUp} src={thumbUp} />
         <div className={styles.rightBlock}>
-          {isMillionaire ? (
-            <p className={styles.prize}>
-              Congrats, you are a millionaire!
-            </p>
-          ) : (
-            <>
-              <p className={styles.title}>Total score:</p>
+          <div>
+            {isMillionaire ? (
               <p className={styles.prize}>
-                {`$${prize} earned`}
+                Congrats, you are a millionaire!
               </p>
-            </>
-          )}
-          <Button onClick={tryAgainHandler} title="Try again" />
+            ) : (
+              <>
+                <p className={styles.title}>Total score:</p>
+                <p className={styles.prize}>
+                  {`$${prize} earned`}
+                </p>
+              </>
+            )}
+          </div>
+          <Button onClick={tryAgainHandler} title="Try again" style={styles.btn} />
         </div>
       </div>
     </div>

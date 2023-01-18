@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../components/Layout/Layout';
 import GameView from './GameView';
@@ -13,6 +13,7 @@ function Game() {
   const [activePrizeId, setActivePrizeId] = useState(1);
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const variantsSwitcher = (itemIndex) => {
     switch (itemIndex - 1) {
       case 1:
@@ -80,6 +81,30 @@ function Game() {
     }
     return answerStyle;
   };
+  const getWindowDimensions = () => {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height,
+    };
+  };
+
+  const useWindowDimensions = () => {
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+    useEffect(() => {
+      function handleResize() {
+        setWindowDimensions(getWindowDimensions());
+      }
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return windowDimensions;
+  };
+
+  const { width } = useWindowDimensions();
 
   return (
     <Layout>
@@ -96,6 +121,9 @@ function Game() {
         isCorrectAnswer={isCorrectAnswer}
         answerStyleHandler={answerStyleHandler}
         isAlreadySelected={isAlreadySelected}
+        burgerHandler={() => setIsHamburgerOpen(!isHamburgerOpen)}
+        isHamburgerOpen={isHamburgerOpen}
+        windowWidth={width}
       />
     </Layout>
   );
